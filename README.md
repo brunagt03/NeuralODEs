@@ -12,17 +12,12 @@ Traditional architectures like Residual Networks can be interpreted as a forward
 
 $$ \dot{x}(t) = v(x(t), \theta(t)) \implies x_{k+1} = x_k + \Delta t \cdot v(x_k, \theta_k) $$
 
-Instead of using standard flat activations (such as ReLU) to parameterize the velocity field $v$, this project uses velocity fields derived natively from an incompressible fluid's stream function $\psi$, strictly enforcing a **divergence-free constraint**:
-
-$$ \nabla \cdot \mathbf{v} = 0 $$
-
-Because these velocity fields are incompressible, they prevent the network from collapsing the entire phase space into single coordinate points. This preservation of volume acts as a powerful geometric regularizer over complex 2D domains.
-
+Instead of using standard flat activations (such as ReLU) to parameterize the velocity field $v$, this project uses velocity fields derived natively from an incompressible fluid's stream function $\psi$.
 ---
 
 ## Repository Architecture
 
-The project is modularized into two primary execution layers:
+The project is modularized into three primary execution layers:
 
 ### 1. Model & Experiment Suite (`main.py`)
 *   **`FlowResNet`**: Constructs the continuous-depth pipeline by stacking sequential `SimpleResNetBlock` modules.
